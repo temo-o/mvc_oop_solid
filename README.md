@@ -1,2 +1,2 @@
-# mvc_oop_solid
+# MVC OOP SOLID
 Test project to improve OOP Solid skills
