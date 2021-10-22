@@ -1,4 +1,6 @@
 <?php
+
+#phpinfo();
     include 'config.php';
     
     // This will set the database, so we can use in other classes
@@ -6,13 +8,15 @@
     $base_route = new Routes\BaseRoute(REQUEST_URI);
     
     if($_SERVER["REQUEST_METHOD"] == "GET"){
-        $module_instance = $base_route->get_controller(); // Get controller object INSTANCE (not just name of the controller)
         
+        $module_instance = $base_route->get_controller(); // Get controller object INSTANCE (not just name of the controller)
+
         if(!(isset($_SESSION["user"]) && isset($_SESSION["user"]["user_id"]) && $_SESSION["user"]["user_id"]>0)){
             if($base_route->module != "login"){
-                #$module_instance->redirect();
+                $module_instance->redirect();
             }
             else{
+                
                 View::render_login_layout($base_route->module);
             }
         }

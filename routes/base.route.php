@@ -4,9 +4,9 @@
 
     class BaseRoute{
 
-        static string $url;
+        static $url;
         private const MODULE_INDEX = 1; // If root url is http://localhost/trips/ - index 1 will be "" (empty)
-        public string $module;
+        public $module;
         private $module_instance;
 
         public $params;
@@ -37,8 +37,8 @@
         }
 
         public function get_controller(){
-            $this->module = self::get_module_from_url();
-            $controller_class_name = ucfirst($this->module)."Controller";
+            $this->module = self::get_module_from_url(); // home
+            $controller_class_name = ucfirst($this->module)."Controller"; // Home
             return new $controller_class_name();
         }
 

@@ -2,7 +2,7 @@
 
     class View{
 
-        public function render_default_layout($model){
+        public static function render_default_layout($model){
 
             require("partials/head.php");
             require("partials/header.php");
@@ -13,7 +13,7 @@
 
         }
 
-        public function render_login_layout($model){
+        public static function render_login_layout($model){
 
             require("partials/head.login.php");
             require("view/".$model.".view.php");

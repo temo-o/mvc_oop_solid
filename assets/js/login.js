@@ -1,25 +1,25 @@
-$(document).on("submit","#login_form", function(e){
+$(document).on("submit", "#login_form", function(e) {
 
     e.preventDefault();
 
     var username = $("#username").val();
     var password = $("#password").val();
     var params = {
-        module: "Authorize",
+        module: "login",
         exec: "authenticate",
         username: username,
         password: password
     };
 
-    ajax(params).done(function(data){
-        if(data.success){
+    ajax(params).done(function(data) {
+        if (data.success) {
             location.href = "home";
         }
         console.log(data);
     });
 
 });
-$(document).on("click","#logout", function(e){
+$(document).on("click", "#logout", function(e) {
 
     e.preventDefault();
 
@@ -28,7 +28,7 @@ $(document).on("click","#logout", function(e){
         exec: "logout"
     };
 
-    ajax(params).done(function(data){
+    ajax(params).done(function(data) {
         console.log("Done");
         location.href = "login";
     });

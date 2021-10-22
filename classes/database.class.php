@@ -25,7 +25,7 @@
             return self::$db;
         }
 
-        private function set_db_pdo(){
+        private static function set_db_pdo(){
             if(static::$db == null){
                 static::$db = new PDO('mysql:host='.self::$db_host.';dbname='.self::$db_name, self::$db_user, self::$db_password);
             }
