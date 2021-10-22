@@ -2,7 +2,7 @@
     session_start();
     define("BASE_URL", __dir__);
     define("REQUEST_URI", $_SERVER["REQUEST_URI"]);
-    define("BASE_FOLDER", "/trips");
+    define("BASE_FOLDER", "/trips_04/mvc_oop_solid");
     
     // Autoload classes. All classes should be named like *.class.php "|| *.model.php || *.controller.php || *.route.php
     // Function will autoload classes so there is no need to include individual files

@@ -4,6 +4,7 @@ $(document).ready(function(){
     var sidebar_width = $(".sidebar").width();
 
     $("#content").css("margin-left", sidebar_width);
+    //$("#action_panel").css("margin-left", sidebar_width);
 
     initialize();
 });
@@ -138,4 +139,8 @@ function ajax(params){
         url: "index.php",
         data: params
     });
+}
+
+function reInitDatatable(elem){
+	elem.DataTable().clear().destroy();
 }
