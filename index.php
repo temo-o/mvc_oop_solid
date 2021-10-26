@@ -11,18 +11,24 @@
         
         $module_instance = $base_route->get_controller(); // Get controller object INSTANCE (not just name of the controller)
 
+        $view = new View($module_instance);
+
         if(!(isset($_SESSION["user"]) && isset($_SESSION["user"]["user_id"]) && $_SESSION["user"]["user_id"]>0)){
             if($base_route->module != "login"){
                 $module_instance->redirect();
             }
-            else{
+            #else{
                 
-                View::render_login_layout($base_route->module);
-            }
+                #View::render_login_layout($base_route->module);
+                RenderLoginLayout::render();
+            #}
         }
         else{
-            View::render_default_layout($base_route->module);
+            #View::render_default_layout($base_route->module);
+            RenderDefaultLayout::render();
         }
+
+        #$view->render();
        
     }
 

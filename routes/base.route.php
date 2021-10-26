@@ -38,15 +38,21 @@
 
         public function get_controller(){
             $this->module = self::get_module_from_url(); // home
-            $controller_class_name = ucfirst($this->module)."Controller"; // Home
-            return new $controller_class_name();
+            $module_identifier = ucfirst($this->module);
+            $controller_class_name = $module_identifier."Controller"; // Home
+            
+            $controller_instance = new $controller_class_name();
+            $controller_instance->module_identifier = $module_identifier;
+            
+            return $controller_instance;
         }
 
         public function post_controller($params = false){
+            
             if(!empty($params["module"])){
+                
                 $this->module = $params["module"];
                 $controller_class_name = ucfirst($this->module)."Controller";
-
                 if(!empty($params["exec"])){
                     $this->module_instance = new $controller_class_name();
                     $exec = $params["exec"];

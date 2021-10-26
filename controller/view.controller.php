@@ -15,6 +15,7 @@
 
         public function get_content($params){
             #print_r($params);
+            
             $view_title = $params["view"];
             require("view/$view_title.view.php");
         }

@@ -1,8 +1,9 @@
 <?php
 
-    class BaseController{
+    class BaseController implements IBaseController{
 
         protected $response;
+        public string $module_identifier;
 
         public function __construct(){
             echo "<br /> Constructing Base Controller <br />";

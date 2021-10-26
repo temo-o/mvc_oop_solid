@@ -117,11 +117,8 @@ function get_current_page() {
     if (url_href.length < 2 || url_href[1] == "") {
         $(".menu_item span").css("color", "#6e768e");
         $("#add_team_item span").css("color", "#00acc1");
-        //current_page = "dashboard";
-        current_page = "add_team";
-        return "add_team";
-        //return "dashboard";
-
+        current_page = "home";
+        return current_page;
     }
     $(".menu_item span").css("color", "#6e768e");
     //$("#"+url_href[1]+ "_item span").css("color","#00acc1");

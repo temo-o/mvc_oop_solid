@@ -13,7 +13,7 @@
     // Autoload classes. All classes should be named like *.class.php "|| *.model.php || *.controller.php || *.route.php
     // Function will autoload classes so there is no need to include individual files
     function autoload($class){
-
+       # echo "$class <br /";
         if(preg_match("/[.a-zA-Z_-]/", $class)){
            
             $class = strtolower($class);
@@ -24,6 +24,7 @@
             }
 
             if($class == "basecontroller"){
+                include BASE_URL."/interfaces/controller.interface.php";
                 include BASE_URL."/controller/base.controller.php";
                 return;
             }
@@ -34,6 +35,7 @@
             }
 
             if($class == "view"){
+                include BASE_URL."/interfaces/view.interface.php";
                 include BASE_URL."/view/view.class.php";
                 return;
             }

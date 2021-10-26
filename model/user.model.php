@@ -4,7 +4,6 @@
 
         public function __construct(){
             $this->_table = "users";
-
             parent::__construct($this->_table);
         }
 
