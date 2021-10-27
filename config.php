@@ -6,6 +6,9 @@
     ini_set('display_errors', 1);
     error_reporting(-1);
     
+    define("BASE_URL", __dir__);
+    define("REQUEST_URI", $_SERVER["REQUEST_URI"]);
+    define("BASE_FOLDER", "/trips_04/mvc_oop_solid");
 
     require_once("base_config.php");
     
