@@ -10,8 +10,6 @@
     define("REQUEST_URI", $_SERVER["REQUEST_URI"]);
     define("BASE_FOLDER", "/trips_04/mvc_oop_solid");
 
-    require_once("base_config.php");
-    
     setcookie("BASE_FOLDER", BASE_FOLDER, time() + (86400 * 30), "/"); // 86400 = 1 day
 
     // Autoload classes. All classes should be named like *.class.php "|| *.model.php || *.controller.php || *.route.php
