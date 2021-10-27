@@ -1,6 +1,6 @@
 <?php
 
-    class UserController extends BaseController{
+    class UserController extends BaseController implements IBaseController{
 
         private $model_instance;
 

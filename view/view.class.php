@@ -1,15 +1,24 @@
 <?php
     namespace View;
     
-    abstract class View {
+    class View {
         
-        public IBaseController $model_instance;
+        public \IBaseController $model_instance;
 
-        public function __construct(IBaseController $model_instance){
+        public function __construct(\IBaseController $model_instance){
             $this->model_instance = $model_instance;
         }
 
-        public static abstract function render(): void;
+        //public static abstract function render(): void;
+
+        public function render(){
+            if($this->model_instance == "login"){
+                RenderDefaultLayout::render();
+            }
+            else{
+                RenderLoginLayout::render();
+            }
+        }
 
         /*public static function render_default_layout($model){
 
@@ -32,7 +41,8 @@
 
     }
 
-    class RenderDefaultLayout extends View {
+    #class RenderDefaultLayout extends View {
+    class RenderDefaultLayout implements \IView {
 
         public static function render():void{
             $cur_dir = dirname(__FILE__);
