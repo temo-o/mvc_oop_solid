@@ -27,20 +27,20 @@
                 $url_path = str_replace(BASE_FOLDER, "", $url_path);
             }
             $url_path_exploded = explode("/", $url_path);
-
+            
             if($url_path_exploded[self::MODULE_INDEX] === "" || $url_path_exploded[self::MODULE_INDEX] === "/"){
                 return "home";
             }
-            
             return $url_path_exploded[self::MODULE_INDEX];
 
         }
 
         public function get_controller(){
+            
             $this->module = self::get_module_from_url(); // home
             $module_identifier = ucfirst($this->module);
-            $controller_class_name = $module_identifier."Controller"; // Home
             
+            $controller_class_name = $module_identifier."Controller"; // Home
             $controller_instance = new $controller_class_name();
             $controller_instance->module_identifier = $module_identifier;
             
@@ -62,6 +62,10 @@
 
                 return new $controller_class_name();
             }
+        }
+
+        public function get_asset_file_path($folder, $file_name){
+            return BASE_FOLDER."/".$folder."/".$file_name;
         }
 
         public function get_url(){

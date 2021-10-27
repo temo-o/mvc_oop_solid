@@ -117,3 +117,12 @@ i.far.fa-credit-card:hover {
 .cursor_pointer{
     cursor: pointer;
 }
+
+.menu_item{
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.sidebar > ul > li{
+    padding-right: 0px;
+}

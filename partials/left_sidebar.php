@@ -9,7 +9,6 @@
             </a>
         </li>
         <li>
-            <a href="#">
                 <a 
                     class="nav-link menu_item" 
                     href="#" 
@@ -18,7 +17,6 @@
             </a>
         </li>
         <li>
-            <a href="#">
                 <a 
                     class="nav-link menu_item" 
                     href="#" 

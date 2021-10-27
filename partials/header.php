@@ -4,7 +4,7 @@
           <a href="home" class="logo logo-dark text-center">
               <span class="logo-sm">
                   <span>Logo</span>
-                  <img src="assets/images/logo-sm.png" alt="" height="22">
+                  <img src="<?php echo BASE_FOLDER.'/assets/images/logo-sm.png'; ?>" alt="" height="22">
                   <!-- <span class="logo-lg-text-light">UBold</span> -->
               </span>
           </a>
