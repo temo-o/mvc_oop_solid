@@ -21,25 +21,26 @@
             $class = strtolower($class);
             #echo "Class: $class <br />";
             if($class == "basemodel"){
-                include BASE_URL."/model/base.model.php";
+                include_once BASE_URL."/model/base.model.php";
                 return;
             }
 
             if($class == "basecontroller"){
-                include BASE_URL."/interfaces/controller.interface.php";
-                include BASE_URL."/controller/base.controller.php";
+                include_once BASE_URL."/interfaces/database.interface.php";
+                include_once BASE_URL."/interfaces/controller.interface.php";
+                include_once BASE_URL."/controller/base.controller.php";
                 return;
             }
 
             if($class == "routes\baseroute"){
                 include_once BASE_URL."/controller/view.controller.php";
-                include BASE_URL."/routes/base.route.php";
+                include_once BASE_URL."/routes/base.route.php";
                 return;
             }
 
             if($class == "view"){
-                include BASE_URL."/interfaces/view.interface.php";
-                include BASE_URL."/view/view.class.php";
+                include_once BASE_URL."/interfaces/view.interface.php";
+                include_once BASE_URL."/view/view.class.php";
                 include_once BASE_URL."/controller/view.controller.php";
                 return;
             }
@@ -64,7 +65,7 @@
                 //so we extract name before "Controller" and apply similar (kinda) logic that above if statement has
                 $class_root = substr($class, 0,strpos($class, "controller"));
                 if(file_exists(BASE_URL."/controller/".$class_root.".controller.php")){
-                    include BASE_URL."/controller/".$class_root.".controller.php";
+                    include_once BASE_URL."/controller/".$class_root.".controller.php";
                 }
                 
             }

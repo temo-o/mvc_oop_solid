@@ -29,8 +29,9 @@ class BaseModel extends Database {
         #public function __construct($db, $table = "") {
         public function __construct($table="") {
             #echo "Constructing base.model.php";
-            Database::get_db_pdo();
-            $this->dbs = Database::$db;
+            #Database::get_db_pdo();
+            #$this->dbs = Database::$db;
+            $this->dbs = Database::set_connection_type("PDO", true);
             #$this->dbs = ""
             $this->_table = $table;
             $this->_conn = $this;

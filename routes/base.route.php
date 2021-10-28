@@ -55,6 +55,7 @@
                 $controller_class_name = ucfirst($this->module)."Controller";
                 if(!empty($params["exec"])){
                     $this->module_instance = new $controller_class_name();
+                    
                     $exec = $params["exec"];
                     #echo "exec: $exec";
                     return $this->module_instance->$exec($params);

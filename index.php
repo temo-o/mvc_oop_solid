@@ -18,6 +18,7 @@
         if(!(isset($_SESSION["user"]) && isset($_SESSION["user"]["user_id"]) && $_SESSION["user"]["user_id"]>0) || $base_route->module == "login"){
             if($base_route->module != "login"){
                 $module_instance->redirect();
+                exit;
             }
             #else{
                 

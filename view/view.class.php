@@ -13,10 +13,11 @@
 
         public function render(){
             if($this->model_instance == "login"){
-                RenderDefaultLayout::render();
+                RenderLoginLayout::render();
+                
             }
             else{
-                RenderLoginLayout::render();
+                RenderDefaultLayout::render();
             }
         }
 
