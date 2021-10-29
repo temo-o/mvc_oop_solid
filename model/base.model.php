@@ -31,12 +31,27 @@ class BaseModel extends Database {
             #echo "Constructing base.model.php";
             #Database::get_db_pdo();
             #$this->dbs = Database::$db;
-            $this->dbs = Database::set_connection_type("PDO", true);
+            $this->dbs = Database::set_connection_type("PDO");
             #$this->dbs = ""
             $this->_table = $table;
             $this->_conn = $this;
         }
-    
+        
+        public function get_insert_array($params){
+
+            $insert_array = [];
+            if(!isset($params["crud"])){
+                return $insert_array;
+            }
+
+            $crud_params = $params["crud"];
+
+            foreach($crud_params as $crud_key=>$crud_params){
+                
+            }
+
+        }
+
         public function dbConn() {
             return $this->dbs;
         }

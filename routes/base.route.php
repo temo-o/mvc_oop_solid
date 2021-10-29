@@ -57,7 +57,6 @@
                     $this->module_instance = new $controller_class_name();
                     
                     $exec = $params["exec"];
-                    #echo "exec: $exec";
                     return $this->module_instance->$exec($params);
                 }
 

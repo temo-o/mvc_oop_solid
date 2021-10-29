@@ -24,6 +24,15 @@
                     Users 
             </a>
         </li>
+        </li>
+        <li>
+                <a 
+                    class="nav-link menu_item" 
+                    href="#" 
+                    data-url="tourist">
+                    Tourists 
+            </a>
+        </li>
         <li><button class="nav-link" id="logout">Logout </button></li>
     </ul>
 </div>

@@ -3,8 +3,8 @@
     class HomeController extends BaseController{
 
         public function __construct(){
-            echo "Constructing HomeController";
-            Databasae::set_connection_type("MySQL", true);
+            #echo "Constructing HomeController";
+            #Databasae::set_connection_type("MySQL", true);
             
         }
 

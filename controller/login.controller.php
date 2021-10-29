@@ -6,13 +6,11 @@
         public $password;
 
         public function __construct(){
-            #echo "Constructing HomeController";
+            $this->logout();
+            $this->layout = "Login";
         }
 
         public function get_view(){
-
-            #View::render_default_layout("home");
-            #require("view/login.view.php");
 
         }
 
@@ -52,7 +50,7 @@
                 "msg"=>"Successfully logged out"
             ];
 
-            $this->return_response();
+            #$this->return_response();
         }
 
     }

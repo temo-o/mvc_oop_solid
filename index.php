@@ -9,26 +9,15 @@
     
     if($_SERVER["REQUEST_METHOD"] == "GET"){
         
-        #$module_instance = $base_route->get_controller(); // Get controller object INSTANCE (not just name of the controller)
-        
-        $module_instance = new UserController();
+        $module_instance = $base_route->get_controller(); // Get controller object INSTANCE (not just name of the controller)
+        #print_r($module_instance);
+        #$module_instance = new UserController();
 
         $view = new View\View($module_instance);
-
         if(!(isset($_SESSION["user"]) && isset($_SESSION["user"]["user_id"]) && $_SESSION["user"]["user_id"]>0) || $base_route->module == "login"){
             if($base_route->module != "login"){
                 $module_instance->redirect();
-                exit;
             }
-            #else{
-                
-                #View::render_login_layout($base_route->module);
-                #View\RenderLoginLayout::render();
-            #}
-        }
-        else{
-            #View::render_default_layout($base_route->module);
-            #View\RenderDefaultLayout::render();
         }
 
         $view->render();

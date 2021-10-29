@@ -4,6 +4,7 @@
 
         protected $response;
         public string $module_identifier;
+        public string $layout = "Default";
 
         public function __construct(){
             echo "<br /> Constructing Base Controller <br />";

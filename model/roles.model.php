@@ -9,7 +9,6 @@
         }
 
         public function get_roles(){
-            #echo "A";
             $this->response = $this->_conn
                 ->get_result_set();
             

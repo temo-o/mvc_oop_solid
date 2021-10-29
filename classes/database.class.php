@@ -13,7 +13,7 @@
 
         public static $connections = null;
 
-        public static function set_connection_type(string $connection_type, bool $connection_value){
+        public static function set_connection_type(string $connection_type){
             self::$connections = new ArrayObject();
 
             try{
