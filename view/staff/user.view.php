@@ -120,7 +120,7 @@
     $("#add_user").click(function(){
         var self = $(this);
         roles_select2();
-        $("#add_user_modal").modal("show");  
+        $("#add_user_modal").modal("show");
     });
 
     function get_users(){

@@ -8,12 +8,15 @@
     
     define("BASE_URL", __dir__);
     define("REQUEST_URI", $_SERVER["REQUEST_URI"]);
-    define("BASE_FOLDER", "/trips_04/mvc_oop_solid");
+    #define("BASE_FOLDER", "/trips_04/mvc_oop_solid");
+    define("BASE_FOLDER", "");
+    #echo BASE_URL;
+    #echo "<pre>";
+    #print_r($_SERVER);
 
     setcookie("BASE_FOLDER", BASE_FOLDER, time() + (86400 * 30), "/"); // 86400 = 1 day
 
     // Autoload classes. All classes should be named like *.class.php "|| *.model.php || *.controller.php || *.route.php
-    // Function will autoload classes so there is no need to include individual files
     function autoload($class){
         #echo "$class <br /";
         if(preg_match("/[.a-zA-Z_-]/", $class)){
@@ -23,6 +26,12 @@
             if($class == "basemodel"){
                 include_once BASE_URL."/model/base.model.php";
                 return;
+            }
+            if($class[0] == "i"){
+                $class_temp = substr($class, 1);
+                if(file_exists(BASE_URL."/interfaces/".$class_temp.".interface.php")){
+                    include_once BASE_URL."/interfaces/".$class_temp.".interface.php";
+                }
             }
 
             if($class == "basecontroller"){

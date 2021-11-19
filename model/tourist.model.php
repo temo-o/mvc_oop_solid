@@ -13,6 +13,18 @@
             
         }
 
+        public function get_tourist_details($params){
+
+            $identifier_value = $params["email"]?$params["email"]:$params["id"];
+            
+            $this->response = $this->_conn
+                ->where_raw("id = '$identifier_value' OR email = '$identifier_value'")
+                ->get_one_result();
+            
+            return $this->response;
+
+        }
+
         public function add_tourist($params){
 
             if(!isset($params["crud"])){

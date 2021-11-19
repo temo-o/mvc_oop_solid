@@ -4,6 +4,7 @@
 
         protected $response;
         public string $module_identifier;
+        public static $index_param = null;
         public string $layout = "Default";
 
         public function __construct(){

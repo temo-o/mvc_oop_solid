@@ -112,6 +112,11 @@ i.far.fa-credit-card:hover {
 #header_wrapper{
     height: 70px;
     background-color: #38414a;
+    position: fixed;
+    width: 100%;
+    z-index: 20;
+    left:0px;
+    top:0px;
 }
 
 .cursor_pointer{
@@ -125,4 +130,13 @@ i.far.fa-credit-card:hover {
 
 .sidebar > ul > li{
     padding-right: 0px;
+}
+
+.restaurant_details{
+    cursor: pointer;
+    color:rgb(117, 35, 211);
+}
+
+#logout{
+    background-color: white;
 }

@@ -24,6 +24,8 @@ class BaseModel extends Database {
         private $LATEST_QUERY = "";
         private $fetch_type = PDO::FETCH_ASSOC;
 
+        #public $index_param;
+
         public $dbs;
     
         #public function __construct($db, $table = "") {
@@ -32,11 +34,52 @@ class BaseModel extends Database {
             #Database::get_db_pdo();
             #$this->dbs = Database::$db;
             $this->dbs = Database::set_connection_type("PDO");
+            $this->mysqli_conn = Database::set_connection_type("MySQL");
             #$this->dbs = ""
             $this->_table = $table;
             $this->_conn = $this;
         }
         
+        function mysqli_call(mysqli $dbLink, $procName, $params=""){
+            if(!$dbLink) {
+                throw new Exception("The MySQLi connection is invalid.");
+            }
+            else{
+                
+                $sql = "CALL {$procName}({$params});";
+                
+                $sqlSuccess = $dbLink->multi_query($sql);
+                
+                if($sqlSuccess){
+                    if($dbLink->more_results()){
+
+                        $result = $dbLink->use_result();
+                        $output = array();
+                        
+                        while($row = $result->fetch_assoc()){
+                            $output[] = $row;
+                        }
+
+                        $result->free();
+                        
+                        while($dbLink->more_results() && $dbLink->next_result()){
+                            $extraResult = $dbLink->use_result();
+                            if($extraResult instanceof mysqli_result){
+                                $extraResult->free();
+                            }
+                        }
+                        return $output;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else{
+                    throw new Exception("The call failed: " . $dbLink->error);
+                }
+            }
+        }
+
         public function get_insert_array($params){
 
             $insert_array = [];
@@ -47,7 +90,7 @@ class BaseModel extends Database {
             $crud_params = $params["crud"];
 
             foreach($crud_params as $crud_key=>$crud_params){
-                
+                    
             }
 
         }

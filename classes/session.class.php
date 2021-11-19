@@ -6,6 +6,10 @@
             $_SESSION["user"] = $session_params;
         }
 
+        public static function get_user_session(){
+            return $_SESSION["user"];
+        }
+
         public static function destroy_user_session(){
             $_SESSION = array();
         }

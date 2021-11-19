@@ -61,9 +61,9 @@
     }
 
     class RenderLoginLayout implements \IView{
-        
+
         public static function render(): void{
-            
+
             require("partials/head.login.php");
             #require("view/".$model.".view.php");
             require("view/login.view.php");

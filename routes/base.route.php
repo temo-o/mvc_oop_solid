@@ -8,6 +8,7 @@
         private const MODULE_INDEX = 1; // If root url is http://localhost/trips/ - index 1 will be "" (empty)
         public $module;
         private $module_instance;
+        static $index_param = null;
 
         public $params;
 
@@ -31,6 +32,10 @@
             if($url_path_exploded[self::MODULE_INDEX] === "" || $url_path_exploded[self::MODULE_INDEX] === "/"){
                 return "home";
             }
+            if(isset($url_path_exploded[(self::MODULE_INDEX)+1])){
+                self::$index_param = $url_path_exploded[(self::MODULE_INDEX)+1];
+            }
+            
             return $url_path_exploded[self::MODULE_INDEX];
 
         }
@@ -41,9 +46,10 @@
             $module_identifier = ucfirst($this->module);
             
             $controller_class_name = $module_identifier."Controller"; // Home
+            #\BaseController::$index_param = self::$index_param;
             $controller_instance = new $controller_class_name();
             $controller_instance->module_identifier = $module_identifier;
-            
+
             return $controller_instance;
         }
 

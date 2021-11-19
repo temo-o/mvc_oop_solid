@@ -1,5 +1,5 @@
 <div class="sidebar">
-    <ul>
+    <!--<ul>
         <li>
             <a 
                 class="nav-link menu_item" 
@@ -33,6 +33,15 @@
                     Tourists 
             </a>
         </li>
+        
+        <li>
+                <a 
+                    class="nav-link menu_item" 
+                    href="#" 
+                    data-url="restaurant">
+                    Restaurants 
+            </a>
+        </li>
         <li><button class="nav-link" id="logout">Logout </button></li>
-    </ul>
+    </ul>-->
 </div>
