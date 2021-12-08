@@ -4,5 +4,6 @@
         "titleBar.activeBackground" : "#848d99",
         "titleBar.inactiveBackground": "#848d99",
         "titleBar.activeForeground":"#000",
-      }
+      },
+      "php.validate.executablePath": "C:\\xampp\\php\\php.exe",
 }

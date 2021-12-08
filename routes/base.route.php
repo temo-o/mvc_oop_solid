@@ -47,10 +47,22 @@
             
             $controller_class_name = $module_identifier."Controller"; // Home
             #\BaseController::$index_param = self::$index_param;
-            $controller_instance = new $controller_class_name();
-            $controller_instance->module_identifier = $module_identifier;
-
-            return $controller_instance;
+            if(class_exists($controller_class_name)){
+                $controller_instance = new $controller_class_name();
+                $controller_instance->module_identifier = $module_identifier;
+                return $controller_instance;
+            }
+            else{
+                header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+                exit;
+                $controller_instance = new \ErrorController();
+                $controller_instance->module_identifier = $module_identifier;
+                header('WWW-Authenticate: NTLM', false);
+                return $controller_instance;
+                $this->redirect("error/403.html");
+                exit;
+            }
+            
         }
 
         public function post_controller($params = false){
@@ -76,6 +88,10 @@
 
         public function get_url(){
             return self::$url;
+        }
+
+        public function redirect($page = "login"){
+            header("Location: ".$page);
         }
 
     }

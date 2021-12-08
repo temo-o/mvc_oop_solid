@@ -1,5 +1,5 @@
 <?php
-
+    
     include 'config.php';
     
     // This will set the database, so we can use in other classes
@@ -45,9 +45,9 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
+        //print_r($_POST);
         // POST will be used for ajax requests only (I hope this is a good idea)
         $controller_instance = $base_route->post_controller($_POST);
     }
-
 
 ?>

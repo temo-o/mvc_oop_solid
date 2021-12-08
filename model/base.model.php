@@ -23,7 +23,6 @@ class BaseModel extends Database {
         private $main_table_constraint = "";
         private $LATEST_QUERY = "";
         private $fetch_type = PDO::FETCH_ASSOC;
-
         #public $index_param;
 
         public $dbs;

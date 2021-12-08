@@ -140,3 +140,12 @@ i.far.fa-credit-card:hover {
 #logout{
     background-color: white;
 }
+
+a.option_button{
+    color: grey;
+    cursor: pointer;
+}
+
+a.option_button:hover{
+    color: #0d6efd;
+}

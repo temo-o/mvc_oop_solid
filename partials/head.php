@@ -17,4 +17,7 @@
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_FOLDER.'/assets/css/datatables.1.11.3.min.css'; ?>">
   <link rel="stylesheet" type="text/css" href="<?php echo BASE_FOLDER.'/assets/css/select2.4.1.0.min.css'; ?>">
 
+  <link rel="stylesheet" type="text/css" href="<?php echo BASE_FOLDER.'/assets/js/vendor/toastr/toast.style.min.css'; ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo BASE_FOLDER.'/assets/css/wenk.css'; ?>">
+
 </head>
