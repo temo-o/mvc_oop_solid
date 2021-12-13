@@ -7,7 +7,7 @@
     $base_route = new Routes\BaseRoute(REQUEST_URI);
     
     if($_SERVER["REQUEST_METHOD"] == "GET"){
-        
+
         $controller_instance = $base_route->get_controller(); // Get controller object INSTANCE (not just name of the controller)
         #print_r($controller_instance->index_param);
         #$module_instance = new UserController();
@@ -45,7 +45,6 @@
     }
 
     if($_SERVER["REQUEST_METHOD"] == "POST"){
-        //print_r($_POST);
         // POST will be used for ajax requests only (I hope this is a good idea)
         $controller_instance = $base_route->post_controller($_POST);
     }

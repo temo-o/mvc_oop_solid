@@ -115,7 +115,7 @@
 
 <!-- USER PAGE MODALS - FINISH -->
 
-<table id="user_table" class="table table-striped table-bordered d-none" style="width:100%">
+<table id="user_table" class="table table-striped table-bordered" style="width:100%">
     <thead>
         <th>ID</th>
         <th>Email</th>
@@ -137,7 +137,7 @@
 </table>
 
 <script>
-
+    var datatable_instance;
     /*var crud_obj = new Crud({
         module_name: "user"
     });*/
@@ -167,7 +167,7 @@
         $("#add_user_modal").modal("show");
     });
 
-    function get_users(){
+    function get_users1(){
         var get_users_params={
             module: "user",
             exec: "get_users"
@@ -211,6 +211,118 @@
             $("#data").html(data);
             console.log(data);
         });
+    }
+
+    function get_users(){
+
+        var table = $("#user_table");
+        //table.DataTable().clear().destroy();
+
+        // Data into this datatable is retreived using server side processing.
+        datatable_instance = table.DataTable( {
+            "processing": true,
+            "serverSide": true,
+            "ajax": {
+                "url": "?module=user&exec=get_users_ssp",
+                "type": "POST",
+                "data":{
+                    module: "user",
+                    exec: "get_users_ssp"
+                }
+            },
+            sDom: 'r<"H"lf><"datatable-scroll"t><"F"ip>',
+            bSort : false,
+            order : [],
+            "searching": true,
+            columns: [
+                { 
+                    // ID
+                    "searchable": true,
+                    render: function ( data, type, row ) 
+                    {   
+                        return row.id;
+                    }
+                },
+                { 
+                    // Email
+                    "searchable": true,
+                    render: function ( data, type, row ) 
+                    {   
+                        return row.email;
+                    }
+                },
+                { 
+                    // First Name
+                    "searchable": true,
+                    render: function ( data, type, row ) 
+                    {   
+                        return row.first_name;
+                    }
+                },
+                { 
+                    // Last Name
+                    "searchable": true,
+                    render: function ( data, type, row ) 
+                    {   
+                        return row.last_name;
+                    }
+                },
+                { 
+                    // Options
+                    render: function ( data, type, row ) 
+                    {   
+
+                        var options = 
+                        `<a 
+                            type="button"
+                            data-target="new_bank" 
+                            data-head="Update Bank" 
+                            class="btn btn-sm btn-img waves-light edit_bank"
+                            data-id="${row.id}"
+                        >
+                            <img src="" />
+                        </a>
+                        <a 
+                            type="button"
+                            href="#"
+                            data-target="confirm"
+                            data-head="Are you sure you want to remove bank?"
+                            class="btn btn-sm btn-img waves-effect waves-light open_modal"
+                            data-bank_id="${row.id}"
+                        >
+                            <img src="" />
+                        </a>`;
+                        return options;
+                    }
+                }
+                
+            ]
+        });
+
+        /*datatable_instance.on( 'xhr', function () {
+            var json = datatable_instance.ajax.json();
+            
+            if(json == undefined || json == "undefined"){
+                return 0;
+            }
+
+            if(json.hasOwnProperty("data")){
+                if(json.data.hasOwnProperty("length")){
+            
+                    var data_length = json.data.length;
+                    var current_page = datatable_instance.page();
+                    if(current_page > 0 && data_length == 0){
+                        $("#banks-tbl").DataTable().page(0).draw("page");
+                    }
+
+                }
+
+            }
+
+        });*/
+        
+        $.LoadingOverlay("hide");
+
     }
 
     $(document).on("click", ".edit_user", function(){

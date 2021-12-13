@@ -18,7 +18,7 @@ $(document).on("click", ".menu_item", function(){
     //console.log(self);
     var target_url = self.data("url");
     //current_page = get_current_page();
-    
+
     if (target_url != current_page) {
 
         console.log(current_page, get_current_page());
@@ -28,7 +28,7 @@ $(document).on("click", ".menu_item", function(){
         if(base_folder === null || base_folder === "null"){
             base_folder = "";
         }
-        
+
         //console.log(base_folder+"/"+target_url);
         history.pushState(base_folder+"/"+target_url, target_url, base_folder+"/"+target_url);
         get_page_content(target_url);
@@ -143,7 +143,7 @@ function get_current_page(){
         return "home";
     }
     return url_path_exploded[1];
-    
+
 }
 
 function ajax(params) {
@@ -217,7 +217,6 @@ function construct_menu(){
 
                 menu_item_color();
 
-
             }
             else{
                 console.log("Error while getting menu items");
@@ -274,7 +273,6 @@ $(document).on('click', '.reset_btn', function(evt) {
     modal.modal('hide');
 });
 
-
 /*$.fn.tcrud = {
     "get_crud_params": function(){
         console.log("From test1"); return this
@@ -290,6 +288,7 @@ $.fn.tcrud = (function(tcurd_params = {}){
     if(!tcurd_params.hasOwnProperty("module_name"))  throw 'Module name is missing';
     this.modal = false;
     if(tcurd_params.hasOwnProperty("modal") && tcurd_params.modal == true) this.modal = true;
+    this.clear_inputs = false;
     if(tcurd_params.hasOwnProperty("clear_inputs") && tcurd_params.clear_inputs == true) this.clear_inputs = true;
     this.form = $(this[0]);
     this.module_name = tcurd_params.module_name;
@@ -339,7 +338,9 @@ $.fn.tcrud = (function(tcurd_params = {}){
         ajax(self.ajax_params).done(function(data){
             console.log(self.modal);
             self.modal?self.close_form_modal():'';
-            self.clear_inputs?self.clear_inputs():'';
+            console.log("self.clear_inputs");
+            console.log(self.clear_inputs);
+            self.clear_inputs?self.cleanup_inputs():'';
 
             toast({
                 msg: data.msg,
@@ -358,9 +359,9 @@ $.fn.tcrud = (function(tcurd_params = {}){
                 $(this[0].closest("div.modal")).modal("hide");
             }
         }
-        
+
     }
-    this.clear_inputs = function(){
+    this.cleanup_inputs = function(){
         this.form.find("input").each(function(){
             let elem = $(this);
             elem.val('');

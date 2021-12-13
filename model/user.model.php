@@ -13,6 +13,79 @@
                 ->get_result_set();
         }
 
+        public function get_users_ssp(){
+
+            $ssp_query  = 
+            '
+                SELECT
+                u.id,
+                u.email,
+                u.role_id,
+                u.first_name,
+                u.last_name,
+                u.status_flag,
+                u.created,
+                u.modified
+                FROM users u
+                ORDER BY 
+                u.id DESC
+            ';
+
+            $columns = [
+                "id",
+                "email",
+                "role_id",
+                "first_name",
+                "last_name",
+                "status_flag",
+                "created",
+                "modified"
+            ];
+
+            $this->response = $this->get_ssp_result($ssp_query, $columns);
+
+        }
+
+        /*public function get_users_ssp(){
+
+            $table = 
+            '
+                (
+                    SELECT
+                    u.id,
+                    u.email,
+                    u.role_id,
+                    u.first_name,
+                    u.last_name,
+                    u.status_flag,
+                    u.created,
+                    u.modified
+                    FROM users u
+                    ORDER BY 
+                    u.id DESC
+                ) temp
+            ';
+
+            $primaryKey = 'id';
+            
+            $columns = array(
+                array( 'db' => 'id', 'dt' => 'id', 'field' => 'id' ),
+                array( 'db' => 'email', 'dt' => 'email', 'field' => 'email' ),
+                array( 'db' => 'role_id', 'dt' => 'role_id', 'field' => 'role_id' ),
+                array( 'db' => 'first_name', 'dt' => 'first_name', 'field' => 'first_name' ),
+                array( 'db' => 'last_name', 'dt' => 'last_name', 'field' => 'last_name' ),
+                array( 'db' => 'status_flag', 'dt' => 'status_flag', 'field' => 'status_flag' ),
+                array( 'db' => 'created', 'dt' => 'created', 'field' => 'created' ),
+                array( 'db' => 'modified', 'dt' => 'modified', 'field' => 'modified' )
+            );
+
+            $ssp_res = SSP::simple( $_POST, $this->dbs, $table, $primaryKey, $columns);
+            $this->response = $ssp_res;
+
+            #echo json_encode($ssp_res);
+            #exit;
+        }*/
+
         public function get_user_details($params){
             if(!empty($params["email"])) $identifier_value = $params["email"];
             if(!empty($params["id"])) $identifier_value = $params["id"];
@@ -37,6 +110,7 @@
             $crud_params = $params["crud_fields"];
             $msg_crud_creating = "creating";
             $msg_crud_created = "created";
+            print_r($crud_params);
             if(!empty($crud_params["id"])){
                 $res = $this->_conn
                     ->update($crud_params, ["id"=>$crud_params["id"]]);

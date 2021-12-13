@@ -16,7 +16,7 @@
             
             $user_module = new User();
             $user_info = $user_module->get_user_details(["email"=>$this->username]);
-
+            #print_r($user_info);
             if(!isset($user_info["password"])){
                 $this->response = [
                     "success"=>false,

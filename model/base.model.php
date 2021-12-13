@@ -39,7 +39,7 @@ class BaseModel extends Database {
             $this->_conn = $this;
         }
         
-        function mysqli_call(mysqli $dbLink, $procName, $params=""){
+        public function mysqli_call(mysqli $dbLink, $procName, $params=""){
             if(!$dbLink) {
                 throw new Exception("The MySQLi connection is invalid.");
             }
@@ -92,6 +92,27 @@ class BaseModel extends Database {
                     
             }
 
+        }
+
+        public function get_ssp_result($query, $columns){
+
+            $table = '('.$query.') temp';
+            
+            $ssp_columns = $this->ssp_get_columns_array($columns);
+            $primaryKey = 'id';
+
+            return SSP::simple( $_POST, $this->dbs, $table, $primaryKey, $ssp_columns);
+
+        }
+
+        public function ssp_get_columns_array($columns){
+
+            $result = [];
+
+            foreach($columns as $column){
+                $result[] = array("db"=>$column, "dt"=>$column, "field"=>$column);
+            }
+            return $result;
         }
 
         public function dbConn() {
@@ -165,6 +186,7 @@ class BaseModel extends Database {
             }
     
             $sql_query = "INSERT INTO {$this->_table} (" . join(", ", $this->columns) . ") VALUES (" . join(", ", $this->placeholders) . ")"; 
+
             $pdo_obj = $this->dbs->prepare($sql_query);
             foreach ( $this->values as $key => $val ) {
                 $pdo_obj->bindValue($key, $val);
